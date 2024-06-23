@@ -1,0 +1,22 @@
+{% extends 'main.html' %} {% block content %}
+
+<form class="max-w-md mx-auto my-3 border border-gray-300 rounded-md p-6" action="" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
+      {{ field.label_tag }}
+    </label>
+    {{ field }}
+    {% if field.errors %}
+    <p class="text-red-500 text-xs italic">{{ field.errors }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <div class="flex items-center justify-end">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Send message</button>
+  </div>
+</form>
+
+
+{% endblock %}
